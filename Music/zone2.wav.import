@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/zone2.wav-d16a25772477d7e3b776e2d2b9dd9d23.sample"
+
+[deps]
+
+source_file="res://Music/zone2.wav"
+dest_files=[ "res://.import/zone2.wav-d16a25772477d7e3b776e2d2b9dd9d23.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=5912441
+compress/mode=0

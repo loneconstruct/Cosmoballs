@@ -1,0 +1,356 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Objects/Level Enter.wav" type="AudioStream" id=1]
+[ext_resource path="res://GUI/Infotext.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Master.gd" type="Script" id=3]
+[ext_resource path="res://Backgrounds/Background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI/splash/splash.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://GUI/UI Generic.wav" type="AudioStream" id=6]
+[ext_resource path="res://GUI/Wipe.wav" type="AudioStream" id=7]
+[ext_resource path="res://GUI/Popups.tres" type="DynamicFont" id=8]
+[ext_resource path="res://GUI/BorderBox.tscn" type="PackedScene" id=9]
+[ext_resource path="res://MessageBox.gd" type="Script" id=10]
+[ext_resource path="res://GUI/win.tscn" type="PackedScene" id=11]
+[ext_resource path="res://GUI/splash/splashscreen.wav" type="AudioStream" id=12]
+[ext_resource path="res://GUI/splash/splashscreen 2.wav" type="AudioStream" id=13]
+[ext_resource path="res://Music/MainTheme.wav" type="AudioStream" id=14]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 256, 328 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "popup"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 3.2, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 256, 328 ), Vector2( 256, 278 ), Vector2( 256, 278 ), Vector2( 256, 328 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PositionTimer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 256, 328 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PositionTimer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 256, 378 ), Vector2( 256, 328 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("PositionTimer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 256, 328 ), Vector2( 256, 378 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "splash"
+length = 6.3
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.1, 1.175, 1.25, 1.325, 1.4, 1.5, 1.875, 3.225, 3.325, 3.45, 3.55, 3.65, 3.75, 3.85, 3.975, 4.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5.5, 6, 6.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("splash")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("splash2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.875 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5, 5.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "setskippable"
+}, {
+"args": [ false ],
+"method": "setskippable"
+} ]
+}
+
+[node name="Master" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 3 )
+
+[node name="MessageBox" type="CanvasLayer" parent="."]
+pause_mode = 2
+script = ExtResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MessageBox"]
+pause_mode = 2
+anims/RESET = SubResource( 1 )
+anims/popup = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="MessageBox"]
+position = Vector2( 256, 328 )
+
+[node name="Container" type="CenterContainer" parent="MessageBox/Position2D"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -24.0
+margin_top = -28.0
+margin_right = 24.0
+grow_horizontal = 2
+mouse_filter = 2
+size_flags_horizontal = 6
+
+[node name="Border" parent="MessageBox/Position2D/Container" instance=ExtResource( 9 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 46.0
+margin_top = 0.0
+margin_right = 82.0
+margin_bottom = 28.0
+patch_margin_top = 11
+patch_margin_bottom = 17
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MessageBox/Position2D/Container"]
+margin_top = 6.0
+margin_right = 128.0
+margin_bottom = 22.0
+grow_horizontal = 2
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Placeholder Text"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerBox" type="CanvasLayer" parent="."]
+pause_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TimerBox"]
+anims/RESET = SubResource( 3 )
+anims/hide = SubResource( 5 )
+anims/show = SubResource( 4 )
+
+[node name="PositionTimer" type="Position2D" parent="TimerBox"]
+position = Vector2( 256, 328 )
+
+[node name="Border" parent="TimerBox/PositionTimer" instance=ExtResource( 9 )]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -50.0
+margin_top = -369.0
+margin_right = 50.0
+margin_bottom = -340.0
+patch_margin_top = 11
+patch_margin_bottom = 17
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TimerBox/PositionTimer/Border"]
+margin_left = 14.0
+margin_top = 8.0
+margin_right = 86.0
+margin_bottom = 24.0
+grow_horizontal = 2
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.329412, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 8 )
+text = "00:00:000"
+align = 1
+valign = 1
+
+[node name="Background" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 14 )
+volume_db = -8.0
+bus = "Music"
+
+[node name="Level Enter" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 1 )
+bus = "SFX2"
+
+[node name="Pause" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 6 )
+pitch_scale = 0.79
+bus = "SFX2"
+
+[node name="Unpause" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 7 )
+volume_db = 2.594
+pitch_scale = 1.61
+bus = "SFX2"
+
+[node name="Tween" type="Tween" parent="."]
+pause_mode = 1
+
+[node name="win" parent="." instance=ExtResource( 11 )]
+anchor_right = 0.0
+margin_right = 512.0
+margin_bottom = 288.0
+
+[node name="SplashScreen" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="SplashScreen"]
+frames = ExtResource( 5 )
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SplashScreen"]
+anims/RESET = SubResource( 7 )
+anims/splash = SubResource( 8 )
+
+[node name="splash" type="AudioStreamPlayer" parent="SplashScreen"]
+stream = ExtResource( 12 )
+bus = "SFX2"
+
+[node name="splash2" type="AudioStreamPlayer" parent="SplashScreen"]
+stream = ExtResource( 13 )
+volume_db = 2.0
+bus = "SFX2"
+
+[node name="back" type="Label" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 274.0
+margin_right = 86.0
+margin_bottom = 282.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "[ESC] Back"
+
+[node name="skip" type="Label" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 274.0
+margin_right = 86.0
+margin_bottom = 282.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "[SPACE] Skip"

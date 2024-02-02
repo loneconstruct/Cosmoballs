@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Textdraw.wav-825836d63570ac8f5c6948e6b1df2f6e.sample"
+
+[deps]
+
+source_file="res://GUI/Textdraw.wav"
+dest_files=[ "res://.import/Textdraw.wav-825836d63570ac8f5c6948e6b1df2f6e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

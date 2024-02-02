@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Idle.wav-e8994ecb56643fc28a1004162689fe80.sample"
+
+[deps]
+
+source_file="res://Objects/Switches/Idle.wav"
+dest_files=[ "res://.import/Idle.wav-e8994ecb56643fc28a1004162689fe80.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

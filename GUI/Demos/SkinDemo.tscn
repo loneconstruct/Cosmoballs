@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Tilesets/TilesetStation.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI/Demos/SkinDemo.gd" type="Script" id=3]
+[ext_resource path="res://GUI/BorderBox.tscn" type="PackedScene" id=4]
+
+[node name="SkinDemo" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Border" parent="." instance=ExtResource( 4 )]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 161.0
+margin_bottom = 193.0
+draw_center = false
+
+[node name="Tiles 32x32" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 0, 0, 393216, 2, 0, 393216, 4, 0, 393216, 131072, 0, 2, 131076, 0, 2, 196608, 0, 131074, 196612, 0, 131074, 327680, 0, 393216, 327682, 0, 393216, 327684, 0, 393216 )
+
+[node name="Tiles 16x16" parent="." instance=ExtResource( 1 )]
+cell_size = Vector2( 16, 16 )
+tile_data = PoolIntArray( 2, 2, 196608, 3, 2, 0, 6, 2, 0, 7, 2, 196608, 65538, 2, 196608, 65539, 2, 131072, 65542, 2, 131072, 65543, 2, 196608, 131072, 2, 196608, 131073, 2, 196608, 131080, 2, 196608, 131081, 2, 196608, 196608, 2, 196609, 196609, 2, 196611, 196616, 2, 196609, 196617, 2, 196611, 524288, 2, 196609, 524289, 2, 196611, 524296, 2, 196609, 524297, 2, 196611, 589824, 2, 196608, 589825, 2, 196608, 589832, 2, 196608, 589833, 2, 196608, 655362, 2, 196608, 655363, 2, 0, 655366, 2, 0, 655367, 2, 196608, 720898, 2, 196608, 720899, 2, 131072, 720902, 2, 131072, 720903, 2, 196608 )
+
+[node name="Background 16x16" parent="." instance=ExtResource( 1 )]
+modulate = Color( 0.286275, 0, 0, 1 )
+z_index = -1
+cell_size = Vector2( 16, 16 )
+collision_layer = 0
+collision_mask = 0
+tile_data = PoolIntArray( 262148, 2, 196609, 262149, 2, 196611, 327684, 14, 0, 458756, 2, 196609, 458757, 2, 196611 )
+
+[node name="Background 32x32" parent="." instance=ExtResource( 1 )]
+modulate = Color( 0.286275, 0, 0, 1 )
+z_index = -1
+collision_layer = 0
+collision_mask = 0
+tile_data = PoolIntArray( 65537, 0, 393218, 65538, 0, 262144, 65539, 0, 393219, 131073, 0, 327680, 131075, 0, 327680, 196609, 0, 327680, 196611, 0, 327680, 262145, 0, 393220, 262146, 0, 262144, 262147, 0, 393221 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 80, 96 )

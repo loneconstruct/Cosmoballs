@@ -1,0 +1,334 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Objects/End Level SFX.wav" type="AudioStream" id=1]
+[ext_resource path="res://Tilesets/TilesetStation.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://In-Game Camera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Tilesets/TilesetStationGlass.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Player Spawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Level.gd" type="Script" id=7]
+[ext_resource path="res://WhitePlane.gd" type="Script" id=8]
+[ext_resource path="res://Balls/Ball Red.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/Player Finish.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Objects/Station Doors/DoorRed.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Objects/Switches/SwitchRed.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Objects/Frame.tscn" type="PackedScene" id=13]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ZoomIn"
+length = 0.7
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("In-Game Camera:zoom:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 100, -0.292899, -62.7933, 0.217165, -90.75, 1, -0.37317, -0.75, 1.50678, 2.08896 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("In-Game Camera:zoom:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 100, -0.293, -62.793, 0.217, -90.75, 1, -0.373, -0.75, 1.507, 2.089 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("White Plane/TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 2.14354, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Player:level_ready")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "ZoomOut"
+length = 1.4
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("In-Game Camera:zoom:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 1.50678, 2.08896, 100, -0.292899, -62.7933, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.3 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("In-Game Camera:zoom:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 1.507, 2.089, 100, -0.293, -62.793, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.3 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("White Plane/TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 3.36358, 0.0980729 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_advance_stage"
+} ]
+}
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+width = 1
+
+[node name="Level 5" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="In-Game Camera" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 128 )
+zoom = Vector2( 100, 100 )
+
+[node name="Background 32x32" parent="." instance=ExtResource( 2 )]
+modulate = Color( 0.286275, 0, 0, 1 )
+z_index = -1
+collision_layer = 0
+collision_mask = 0
+tile_data = PoolIntArray( -393209, 6, 0, -262139, 10, 0, -262138, 10, 0, -262135, 10, 0, -262134, 10, 0, -196604, 10, 0, -196603, 10, 0, -196602, 10, 0, -196601, 0, 65537, -196600, 0, 65539, -196599, 10, 0, -196598, 10, 0, -196597, 10, 0, -131069, 10, 0, -131068, 10, 0, -131065, 10, 0, -131064, 10, 0, -131061, 10, 0, -131060, 10, 0, -65534, 10, 0, -65523, 10, 0, 1, 10, 0, 2, 10, 0, 13, 10, 0, 14, 10, 0, 65536, 10, 0, 65537, 10, 0, 65541, 10, 0, 65542, 10, 0, 65543, 10, 0, 65544, 10, 0, 65545, 10, 0, 65546, 10, 0, 65550, 10, 0, 65551, 10, 0, 131072, 10, 0, 131073, 10, 0, 131077, 10, 0, 131078, 0, 393218, 131079, 0, 262144, 131080, 0, 262144, 131081, 0, 393219, 131082, 10, 0, 131086, 10, 0, 131087, 10, 0, 262141, 0, 196609, 262142, 0, 196611, 196608, 10, 0, 196609, 0, 2, 196610, 10, 0, 196613, 10, 0, 196614, 0, 327680, 196615, 6, 0, 196617, 0, 327680, 196618, 10, 0, 196621, 10, 0, 196622, 0, 2, 196623, 10, 0, 196625, 0, 196609, 196626, 0, 196611, 327677, 0, 327681, 327678, 0, 327683, 262144, 10, 0, 262145, 0, 131074, 262146, 10, 0, 262149, 10, 0, 262150, 0, 327680, 262153, 0, 327680, 262154, 10, 0, 262157, 10, 0, 262158, 0, 131074, 262159, 10, 0, 262161, 0, 327681, 262162, 0, 327683, 327680, 10, 0, 327681, 10, 0, 327685, 10, 0, 327686, 0, 393220, 327687, 0, 262144, 327688, 0, 262144, 327689, 0, 393221, 327690, 10, 0, 327694, 10, 0, 327695, 10, 0, 393216, 10, 0, 393217, 10, 0, 393221, 10, 0, 393222, 10, 0, 393223, 10, 0, 393224, 10, 0, 393225, 10, 0, 393226, 10, 0, 393230, 10, 0, 393231, 10, 0, 458753, 10, 0, 458754, 10, 0, 458765, 10, 0, 458766, 10, 0, 524290, 10, 0, 524301, 10, 0, 589827, 10, 0, 589828, 10, 0, 589831, 10, 0, 589832, 10, 0, 589835, 10, 0, 589836, 10, 0, 655364, 10, 0, 655365, 10, 0, 655366, 10, 0, 655367, 0, 65537, 655368, 0, 65539, 655369, 10, 0, 655370, 10, 0, 655371, 10, 0, 720901, 10, 0, 720902, 10, 0, 720903, 10, 0, 720904, 10, 0, 720905, 10, 0, 720906, 10, 0, 786439, 6, 0 )
+
+[node name="Background 16x16" parent="." instance=ExtResource( 2 )]
+modulate = Color( 0.286275, 0, 0, 1 )
+z_index = -1
+cell_size = Vector2( 16, 16 )
+collision_layer = 0
+collision_mask = 0
+tile_data = PoolIntArray( -524273, 10, 0, -262134, 2, 196608, -262133, 2, 196608, -262132, 2, 196608, -262131, 2, 196608, -262126, 2, 196608, -262125, 2, 196608, -262124, 2, 196608, -262123, 2, 196608, -196598, 2, 196608, -196597, 15, 0, -196595, 2, 196608, -196590, 2, 196608, -196589, 15, 0, -196587, 2, 196608, -131066, 2, 196608, -131065, 2, 196608, -131064, 2, 196608, -131063, 2, 196608, -131062, 2, 196608, -131059, 2, 196608, -131058, 2, 196608, -131057, 2, 196608, -131056, 2, 196608, -131055, 2, 196608, -131054, 2, 196608, -131051, 2, 196608, -131050, 2, 196608, -131049, 2, 196608, -131048, 2, 196608, -131047, 2, 196608, -65530, 2, 196608, -65529, 39, 0, -65527, 40, 0, -65525, 39, 0, -65523, 40, 0, -65521, 39, 0, -65519, 40, 0, -65517, 39, 0, -65515, 40, 0, -65513, 39, 0, -65511, 2, 196608, 6, 2, 196608, 25, 2, 196608, 65542, 2, 196608, 65543, 40, 0, 65545, 2, 196608, 65546, 2, 196608, 65547, 2, 196608, 65548, 2, 196608, 65549, 2, 196608, 65550, 2, 196608, 65551, 2, 196608, 65552, 2, 196608, 65553, 2, 196608, 65554, 2, 196608, 65555, 2, 196608, 65556, 2, 196608, 65557, 2, 196608, 65558, 2, 196608, 65559, 40, 0, 65561, 2, 196608, 131076, 2, 196608, 131077, 2, 196608, 131078, 2, 196608, 131081, 2, 196608, 131094, 2, 196608, 131097, 2, 196608, 131098, 2, 196608, 131099, 2, 196608, 196612, 2, 196608, 196613, 15, 0, 196615, 39, 0, 196617, 2, 196608, 196630, 2, 196608, 196631, 39, 0, 196633, 15, 0, 196635, 2, 196608, 262148, 2, 196608, 262153, 2, 196608, 262166, 2, 196608, 262171, 2, 196608, 327684, 2, 196608, 327685, 2, 196608, 327686, 2, 196608, 327687, 40, 0, 327689, 2, 196608, 327702, 2, 196608, 327703, 40, 0, 327705, 2, 196608, 327706, 2, 196608, 327707, 2, 196608, 458745, 2, 196608, 458750, 42, 0, 458751, 41, 0, 393222, 2, 196608, 393225, 2, 196608, 393238, 2, 196608, 393241, 2, 196608, 393248, 42, 0, 393249, 41, 0, 393254, 2, 196608, 524281, 2, 0, 524286, 41, 0, 524287, 42, 0, 458758, 2, 196608, 458759, 39, 0, 458761, 2, 196608, 458774, 2, 196608, 458775, 39, 0, 458777, 2, 196608, 458784, 41, 0, 458785, 42, 0, 458790, 2, 0, 589817, 2, 131072, 589822, 42, 0, 589823, 41, 0, 524294, 2, 196608, 524297, 2, 196608, 524310, 2, 196608, 524313, 2, 196608, 524320, 42, 0, 524321, 41, 0, 524326, 2, 131072, 655353, 2, 196608, 655358, 41, 0, 655359, 42, 0, 589830, 2, 196608, 589831, 40, 0, 589833, 2, 196608, 589846, 2, 196608, 589847, 40, 0, 589849, 2, 196608, 589856, 41, 0, 589857, 42, 0, 589862, 2, 196608, 655364, 2, 196608, 655365, 2, 196608, 655366, 2, 196608, 655369, 2, 196608, 655382, 2, 196608, 655385, 2, 196608, 655386, 2, 196608, 655387, 2, 196608, 720900, 2, 196608, 720901, 15, 0, 720903, 39, 0, 720905, 2, 196608, 720918, 2, 196608, 720919, 39, 0, 720921, 15, 0, 720923, 2, 196608, 786436, 2, 196608, 786441, 2, 196608, 786454, 2, 196608, 786459, 2, 196608, 851972, 2, 196608, 851973, 2, 196608, 851974, 2, 196608, 851975, 40, 0, 851977, 2, 196608, 851990, 2, 196608, 851991, 40, 0, 851993, 2, 196608, 851994, 2, 196608, 851995, 2, 196608, 917510, 2, 196608, 917513, 2, 196608, 917514, 2, 196608, 917515, 2, 196608, 917516, 2, 196608, 917517, 2, 196608, 917518, 2, 196608, 917519, 2, 196608, 917520, 2, 196608, 917521, 2, 196608, 917522, 2, 196608, 917523, 2, 196608, 917524, 2, 196608, 917525, 2, 196608, 917526, 2, 196608, 917529, 2, 196608, 983046, 2, 196608, 983047, 39, 0, 983049, 40, 0, 983051, 39, 0, 983053, 40, 0, 983055, 39, 0, 983057, 40, 0, 983059, 39, 0, 983061, 40, 0, 983063, 39, 0, 983065, 2, 196608, 1048582, 2, 196608, 1048601, 2, 196608, 1114118, 2, 196608, 1114119, 2, 196608, 1114120, 2, 196608, 1114121, 2, 196608, 1114122, 2, 196608, 1114123, 15, 0, 1114125, 2, 196608, 1114126, 2, 196608, 1114127, 2, 196608, 1114128, 2, 196608, 1114129, 2, 196608, 1114130, 2, 196608, 1114131, 15, 0, 1114133, 2, 196608, 1114134, 2, 196608, 1114135, 2, 196608, 1114136, 2, 196608, 1114137, 2, 196608, 1179658, 2, 196608, 1179661, 2, 196608, 1179666, 2, 196608, 1179669, 2, 196608, 1245194, 2, 196608, 1245195, 2, 196608, 1245196, 2, 196608, 1245197, 2, 196608, 1245202, 2, 196608, 1245203, 2, 196608, 1245204, 2, 196608, 1245205, 2, 196608 )
+
+[node name="Background Glass" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0.286275, 0, 0, 1 )
+z_index = -1
+cell_size = Vector2( 16, 16 )
+collision_layer = 0
+
+[node name="Tiles 32x32" parent="." instance=ExtResource( 2 )]
+tile_data = PoolIntArray( -458746, 26, 0, -458745, 10, 0, -458744, 10, 0, -458743, 25, 0, -393211, 26, 0, -393210, 10, 0, -393207, 10, 0, -393206, 25, 0, -327676, 26, 0, -327675, 10, 0, -327674, 10, 0, -327671, 10, 0, -327670, 10, 0, -327669, 25, 0, -262141, 26, 0, -262140, 10, 0, -262139, 23, 0, -262138, 24, 0, -262135, 23, 0, -262134, 24, 0, -262133, 10, 0, -262132, 25, 0, -196606, 26, 0, -196605, 10, 0, -196604, 23, 0, -196597, 24, 0, -196596, 10, 0, -196595, 25, 0, -131071, 26, 0, -131070, 10, 0, -131069, 23, 0, -131060, 24, 0, -131059, 10, 0, -131058, 25, 0, -65536, 26, 0, -65535, 10, 0, -65534, 23, 0, -65523, 24, 0, -65522, 10, 0, -65521, 25, 0, 65535, 26, 0, 0, 10, 0, 1, 23, 0, 14, 24, 0, 15, 10, 0, 16, 25, 0, 131070, 26, 0, 131071, 10, 0, 65536, 23, 0, 65542, 26, 0, 65545, 25, 0, 65551, 24, 0, 65552, 10, 0, 65553, 25, 0, 196604, 26, 0, 196605, 10, 0, 196606, 10, 0, 196607, 10, 0, 131072, 25, 0, 131077, 26, 0, 131078, 23, 0, 131081, 24, 0, 131082, 25, 0, 131087, 26, 0, 131088, 10, 0, 131089, 10, 0, 131090, 10, 0, 131091, 25, 0, 196613, 10, 0, 196618, 10, 0, 262149, 10, 0, 262154, 10, 0, 393212, 24, 0, 393213, 10, 0, 393214, 10, 0, 393215, 10, 0, 327680, 23, 0, 327685, 24, 0, 327686, 25, 0, 327689, 26, 0, 327690, 23, 0, 327695, 24, 0, 327696, 10, 0, 327697, 10, 0, 327698, 10, 0, 327699, 23, 0, 458750, 24, 0, 458751, 10, 0, 393216, 25, 0, 393222, 24, 0, 393223, 10, 0, 393224, 10, 0, 393225, 23, 0, 393231, 26, 0, 393232, 10, 0, 393233, 23, 0, 524287, 24, 0, 458752, 10, 0, 458753, 25, 0, 458766, 26, 0, 458767, 10, 0, 458768, 23, 0, 524288, 24, 0, 524289, 10, 0, 524290, 25, 0, 524301, 26, 0, 524302, 10, 0, 524303, 23, 0, 589825, 24, 0, 589826, 10, 0, 589827, 25, 0, 589836, 26, 0, 589837, 10, 0, 589838, 23, 0, 655362, 24, 0, 655363, 10, 0, 655364, 25, 0, 655371, 26, 0, 655372, 10, 0, 655373, 23, 0, 720899, 24, 0, 720900, 10, 0, 720901, 25, 0, 720902, 26, 0, 720905, 25, 0, 720906, 26, 0, 720907, 10, 0, 720908, 23, 0, 786436, 24, 0, 786437, 10, 0, 786438, 10, 0, 786441, 10, 0, 786442, 10, 0, 786443, 23, 0, 851973, 24, 0, 851974, 10, 0, 851977, 10, 0, 851978, 23, 0, 917510, 24, 0, 917511, 10, 0, 917512, 10, 0, 917513, 23, 0 )
+
+[node name="Tiles 16x16" parent="." instance=ExtResource( 2 )]
+cell_size = Vector2( 16, 16 )
+tile_data = PoolIntArray( -524274, 2, 196608, -524271, 2, 196608, -458738, 2, 196608, -458735, 2, 196608, 458743, 33, 0, 458744, 2, 196608, 393255, 2, 196608, 393256, 34, 0, 524279, 19, 0, 458791, 19, 0, 655351, 32, 0, 655352, 2, 196608, 589863, 2, 196608, 589864, 31, 0 )
+
+[node name="Glass" parent="." instance=ExtResource( 5 )]
+tile_data = PoolIntArray( 65543, 7, 65537, 65544, 7, 65539, 720903, 7, 65537, 720904, 7, 65539 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 256, 128 )
+
+[node name="Camera Transform" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../In-Game Camera")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+autoplay = "ZoomIn"
+anims/ZoomIn = SubResource( 1 )
+anims/ZoomOut = SubResource( 2 )
+
+[node name="AnimatorDelay" type="Timer" parent="."]
+
+[node name="White Plane" type="ParallaxBackground" parent="."]
+layer = 100
+
+[node name="TextureRect" type="TextureRect" parent="White Plane"]
+visible = false
+margin_right = 592.0
+margin_bottom = 288.0
+texture = SubResource( 4 )
+stretch_mode = 2
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="End SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "SFX2"
+
+[node name="Player Spawner" parent="." instance=ExtResource( 6 )]
+position = Vector2( 256, 128 )
+
+[node name="Red Door3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 16, 144 )
+
+[node name="Red Door2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 16, 112 )
+
+[node name="Red Door4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 496, 144 )
+
+[node name="Red Door5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 496, 112 )
+
+[node name="Red Door" parent="." instance=ExtResource( 11 )]
+position = Vector2( 256, -112 )
+
+[node name="Red Switch" parent="." instance=ExtResource( 12 )]
+position = Vector2( 256, 416 )
+
+[node name="Ball Red" parent="." instance=ExtResource( 9 )]
+position = Vector2( 96, 256 )
+UP_RIGHT = true
+
+[node name="Ball Red17" parent="." instance=ExtResource( 9 )]
+position = Vector2( -48, 112 )
+RIGHT = true
+
+[node name="Ball Red19" parent="." instance=ExtResource( 9 )]
+position = Vector2( -80, 112 )
+LEFT = true
+
+[node name="Ball Red24" parent="." instance=ExtResource( 9 )]
+position = Vector2( -80, 144 )
+LEFT = true
+
+[node name="Ball Red18" parent="." instance=ExtResource( 9 )]
+position = Vector2( -48, 144 )
+RIGHT = true
+
+[node name="Ball Red25" parent="." instance=ExtResource( 9 )]
+position = Vector2( 592, 112 )
+RIGHT = true
+
+[node name="Ball Red26" parent="." instance=ExtResource( 9 )]
+position = Vector2( 560, 112 )
+LEFT = true
+
+[node name="Ball Red27" parent="." instance=ExtResource( 9 )]
+position = Vector2( 560, 144 )
+LEFT = true
+
+[node name="Ball Red28" parent="." instance=ExtResource( 9 )]
+position = Vector2( 592, 144 )
+RIGHT = true
+
+[node name="Ball Red20" parent="." instance=ExtResource( 9 )]
+position = Vector2( 32, 192 )
+DOWN_RIGHT = true
+
+[node name="Ball Red21" parent="." instance=ExtResource( 9 )]
+position = Vector2( 480, 192 )
+DOWN_LEFT = true
+
+[node name="Ball Red22" parent="." instance=ExtResource( 9 )]
+position = Vector2( 480, 64 )
+UP_LEFT = true
+
+[node name="Ball Red23" parent="." instance=ExtResource( 9 )]
+position = Vector2( 32, 64 )
+UP_RIGHT = true
+
+[node name="Ball Red2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 192, 224 )
+DOWN_LEFT = true
+
+[node name="Ball Red3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 320, 224 )
+DOWN_RIGHT = true
+
+[node name="Ball Red4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 416, 256 )
+UP_LEFT = true
+
+[node name="Ball Red5" parent="." instance=ExtResource( 9 )]
+position = Vector2( 416, 0 )
+DOWN_LEFT = true
+
+[node name="Ball Red6" parent="." instance=ExtResource( 9 )]
+position = Vector2( 320, 32 )
+UP_RIGHT = true
+
+[node name="Ball Red7" parent="." instance=ExtResource( 9 )]
+position = Vector2( 192, 32 )
+UP_LEFT = true
+
+[node name="Ball Red9" parent="." instance=ExtResource( 9 )]
+position = Vector2( 224, 0 )
+DOWN_LEFT = true
+
+[node name="Ball Red10" parent="." instance=ExtResource( 9 )]
+position = Vector2( 288, 0 )
+DOWN_RIGHT = true
+
+[node name="Ball Red11" parent="." instance=ExtResource( 9 )]
+position = Vector2( 384, 96 )
+UP_LEFT = true
+
+[node name="Ball Red12" parent="." instance=ExtResource( 9 )]
+position = Vector2( 128, 96 )
+UP_RIGHT = true
+
+[node name="Ball Red13" parent="." instance=ExtResource( 9 )]
+position = Vector2( 128, 160 )
+DOWN_RIGHT = true
+
+[node name="Ball Red14" parent="." instance=ExtResource( 9 )]
+position = Vector2( 384, 160 )
+DOWN_LEFT = true
+
+[node name="Ball Red15" parent="." instance=ExtResource( 9 )]
+position = Vector2( 288, 256 )
+UP_RIGHT = true
+
+[node name="Ball Red16" parent="." instance=ExtResource( 9 )]
+position = Vector2( 224, 256 )
+UP_LEFT = true
+
+[node name="Ball Red8" parent="." instance=ExtResource( 9 )]
+position = Vector2( 96, 0 )
+DOWN_RIGHT = true
+
+[node name="Player Finish" parent="." instance=ExtResource( 10 )]
+position = Vector2( 256, -160 )
+
+[node name="Frame" parent="." instance=ExtResource( 13 )]
+margin_left = -144.0
+margin_top = -224.0
+margin_right = 656.0
+margin_bottom = 480.0
+
+[connection signal="timeout" from="AnimatorDelay" to="." method="_on_AnimatorDelay_timeout"]

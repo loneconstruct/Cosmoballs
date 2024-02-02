@@ -1,0 +1,239 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://GUI/Popups.tres" type="DynamicFont" id=1]
+[ext_resource path="res://GUI/SettingsMenu.gd" type="Script" id=2]
+[ext_resource path="res://GUI/Checkbox2.png" type="Texture" id=3]
+[ext_resource path="res://GUI/Checkbox1.png" type="Texture" id=4]
+[ext_resource path="res://GUI/small_pixel.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://GUI/Slider.tscn" type="PackedScene" id=7]
+
+[sub_resource type="StyleBoxFlat" id=25]
+content_margin_top = 6.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.337255, 0, 0, 1 )
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="DynamicFont" id=27]
+size = 8
+outline_size = 1
+outline_color = Color( 0.337255, 0, 0, 1 )
+extra_spacing_bottom = -1
+font_data = ExtResource( 5 )
+
+[node name="Settings" type="VBoxContainer"]
+pause_mode = 2
+visible = false
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 172.0
+margin_bottom = 188.0
+script = ExtResource( 2 )
+
+[node name="HBoxMusic" type="HBoxContainer" parent="."]
+margin_right = 160.0
+margin_bottom = 16.0
+
+[node name="LabelMusic" type="Label" parent="HBoxMusic"]
+margin_right = 40.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Music"
+
+[node name="Music" parent="HBoxMusic" instance=ExtResource( 7 )]
+margin_left = 44.0
+custom_styles/slider = SubResource( 25 )
+custom_styles/grabber_area_highlight = SubResource( 26 )
+custom_styles/grabber_area = SubResource( 24 )
+
+[node name="HBoxSound" type="HBoxContainer" parent="."]
+margin_top = 20.0
+margin_right = 160.0
+margin_bottom = 36.0
+
+[node name="LabelSound" type="Label" parent="HBoxSound"]
+margin_right = 40.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Sound"
+
+[node name="Sound" parent="HBoxSound" instance=ExtResource( 7 )]
+margin_left = 44.0
+custom_styles/slider = SubResource( 25 )
+custom_styles/grabber_area_highlight = SubResource( 26 )
+custom_styles/grabber_area = SubResource( 24 )
+
+[node name="spacer" type="Control" parent="."]
+margin_top = 40.0
+margin_right = 160.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 0, 6 )
+
+[node name="line" type="Label" parent="spacer"]
+margin_left = -1.0
+margin_top = -8.0
+margin_right = 159.0
+margin_bottom = 8.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "____________________"
+
+[node name="HBoxFullscreen" type="HBoxContainer" parent="."]
+margin_top = 50.0
+margin_right = 160.0
+margin_bottom = 74.0
+
+[node name="Fullscreen" type="CheckBox" parent="HBoxFullscreen"]
+margin_right = 24.0
+margin_bottom = 24.0
+custom_icons/checked = ExtResource( 3 )
+custom_icons/unchecked = ExtResource( 4 )
+custom_styles/focus = SubResource( 22 )
+action_mode = 0
+
+[node name="label" type="Label" parent="HBoxFullscreen"]
+margin_left = 28.0
+margin_top = 4.0
+margin_right = 156.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Fullscreen [F11]"
+
+[node name="Resolutions1" type="HBoxContainer" parent="."]
+margin_top = 78.0
+margin_right = 160.0
+margin_bottom = 102.0
+
+[node name="720p" type="CheckBox" parent="Resolutions1"]
+margin_right = 24.0
+margin_bottom = 24.0
+custom_icons/checked = ExtResource( 3 )
+custom_icons/unchecked = ExtResource( 4 )
+custom_styles/focus = SubResource( 22 )
+action_mode = 0
+
+[node name="label2" type="Label" parent="Resolutions1"]
+margin_left = 28.0
+margin_top = 4.0
+margin_right = 68.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "720p "
+
+[node name="1080p" type="CheckBox" parent="Resolutions1"]
+margin_left = 72.0
+margin_right = 96.0
+margin_bottom = 24.0
+custom_icons/checked = ExtResource( 3 )
+custom_icons/unchecked = ExtResource( 4 )
+custom_styles/focus = SubResource( 22 )
+action_mode = 0
+
+[node name="label3" type="Label" parent="Resolutions1"]
+margin_left = 100.0
+margin_top = 4.0
+margin_right = 140.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "1080p"
+
+[node name="Resolutions2" type="HBoxContainer" parent="."]
+margin_top = 106.0
+margin_right = 160.0
+margin_bottom = 130.0
+
+[node name="1440p" type="CheckBox" parent="Resolutions2"]
+margin_right = 24.0
+margin_bottom = 24.0
+custom_icons/checked = ExtResource( 3 )
+custom_icons/unchecked = ExtResource( 4 )
+custom_styles/focus = SubResource( 22 )
+action_mode = 0
+
+[node name="label4" type="Label" parent="Resolutions2"]
+margin_left = 28.0
+margin_top = 4.0
+margin_right = 68.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "1440p"
+
+[node name="2160p" type="CheckBox" parent="Resolutions2"]
+margin_left = 72.0
+margin_right = 96.0
+margin_bottom = 24.0
+custom_icons/checked = ExtResource( 3 )
+custom_icons/unchecked = ExtResource( 4 )
+custom_styles/focus = SubResource( 22 )
+action_mode = 0
+
+[node name="label1" type="Label" parent="Resolutions2"]
+margin_left = 100.0
+margin_top = 4.0
+margin_right = 148.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "2160p "
+
+[node name="spacer2" type="Control" parent="."]
+margin_top = 134.0
+margin_right = 160.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 0, 6 )
+
+[node name="line" type="Label" parent="spacer2"]
+margin_left = -1.0
+margin_top = -11.0
+margin_right = 159.0
+margin_bottom = 5.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "____________________"
+
+[node name="spacer3" type="Control" parent="."]
+margin_top = 144.0
+margin_right = 160.0
+margin_bottom = 144.0
+
+[node name="label4" type="Label" parent="spacer3"]
+margin_left = 1.0
+margin_right = 159.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 27 )
+text = "PRECISE MOVEMENT
+INTERACTION
+RESTART LEVEL
+"
+
+[node name="label5" type="Label" parent="spacer3"]
+margin_left = 1.0
+margin_right = 159.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 27 )
+text = "[ Shift ]
+[ Space ]
+[ R ]"
+align = 2
+
+[connection signal="value_changed" from="HBoxMusic/Music" to="." method="_on_Music_value_changed"]
+[connection signal="value_changed" from="HBoxSound/Sound" to="." method="_on_Sound_value_changed"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Planet ZoomOut.wav-52890d50b65728eaa15869ef68b4a7dd.sample"
+
+[deps]
+
+source_file="res://GUI/Planet ZoomOut.wav"
+dest_files=[ "res://.import/Planet ZoomOut.wav-52890d50b65728eaa15869ef68b4a7dd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

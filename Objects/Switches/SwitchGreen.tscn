@@ -1,0 +1,136 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Objects/Switches/Activate Green.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Switches/Switch.gd" type="Script" id=2]
+[ext_resource path="res://Objects/Switches/Switch Green.png" type="Texture" id=3]
+[ext_resource path="res://Objects/Switches/SFX Activate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Switches/SFX ActivationRange.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Switches/SFX Idle.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Activate"
+length = 0.4
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Activation Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Activation Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.375 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Activate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4, 4 )
+
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 0, 1, 0, 1, 0, 1, 0, 0 )
+
+[node name="Green Switch" type="Node2D" groups=["Switch"]]
+z_index = -1
+script = ExtResource( 2 )
+color = "Green"
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 0.937255, 0.937255, 1 )
+light_mask = 0
+texture = ExtResource( 3 )
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Idle = SubResource( 1 )
+
+[node name="Activation Sprite" type="Sprite" parent="."]
+light_mask = 0
+z_index = 2
+texture = ExtResource( 1 )
+hframes = 13
+
+[node name="Activation Animation" type="AnimationPlayer" parent="."]
+anims/Activate = SubResource( 2 )
+
+[node name="CheckSpace" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckSpace"]
+shape = SubResource( 3 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 23
+lifetime = 0.5
+emission_shape = 3
+emission_points = PoolVector2Array( 12, 12, -12, 12, -12, -12, 12, -12 )
+emission_colors = PoolColorArray(  )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 180 )
+initial_velocity = 45.0
+initial_velocity_random = 0.17
+scale_amount = 1.5
+color_ramp = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.1
+
+[node name="ActivationRange" parent="." instance=ExtResource( 5 )]
+
+[node name="Idle" parent="." instance=ExtResource( 6 )]
+
+[node name="Activate" parent="." instance=ExtResource( 4 )]
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="area_entered" from="CheckSpace" to="." method="_on_CheckSpace_area_entered"]
+[connection signal="area_exited" from="CheckSpace" to="." method="_on_CheckSpace_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

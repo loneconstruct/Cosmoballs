@@ -1,0 +1,301 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://GUI/BorderBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GUI/PauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://GUI/levelbutton1.png" type="Texture" id=3]
+[ext_resource path="res://GUI/SmallMenuFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://GUI/Large Label.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI/UI Select.wav" type="AudioStream" id=6]
+[ext_resource path="res://Player/Light.png" type="Texture" id=7]
+[ext_resource path="res://GUI/UI Hover.wav" type="AudioStream" id=8]
+[ext_resource path="res://GUI/9patch.png" type="Texture" id=9]
+[ext_resource path="res://GUI/Settings.tscn" type="PackedScene" id=10]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[node name="PauseMenu" type="CanvasLayer"]
+pause_mode = 2
+layer = 100
+script = ExtResource( 2 )
+
+[node name="Border" parent="." instance=ExtResource( 1 )]
+light_mask = 0
+margin_left = -64.0
+margin_top = -90.0
+margin_right = 64.0
+margin_bottom = 90.0
+mouse_filter = 1
+
+[node name="Label" parent="Border" instance=ExtResource( 5 )]
+light_mask = 0
+margin_left = 8.0
+margin_top = 12.0
+margin_right = 121.0
+margin_bottom = 36.0
+mouse_filter = 1
+text = "PAUSED"
+
+[node name="Settings" type="NinePatchRect" parent="Border"]
+light_mask = 0
+margin_left = 12.0
+margin_top = 37.0
+margin_right = 116.0
+margin_bottom = 69.0
+focus_neighbour_bottom = NodePath("../Customize")
+mouse_filter = 1
+texture = ExtResource( 3 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Highlight" type="TextureRect" parent="Border/Settings"]
+modulate = Color( 1, 0, 0, 0.156863 )
+light_mask = 0
+material = SubResource( 1 )
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 190.0
+margin_bottom = 339.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.5, 0.06 )
+rect_clip_content = true
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 4
+
+[node name="Label" parent="Border/Settings" instance=ExtResource( 5 )]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 4 )
+text = "SETTINGS"
+
+[node name="Restart" type="NinePatchRect" parent="Border"]
+light_mask = 0
+margin_left = 12.0
+margin_top = 70.0
+margin_right = 116.0
+margin_bottom = 102.0
+focus_neighbour_bottom = NodePath("../Customize")
+mouse_filter = 1
+texture = ExtResource( 3 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Highlight" type="TextureRect" parent="Border/Restart"]
+modulate = Color( 1, 0, 0, 0.156863 )
+light_mask = 0
+material = SubResource( 1 )
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 190.0
+margin_bottom = 339.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.5, 0.06 )
+rect_clip_content = true
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 4
+
+[node name="Label" parent="Border/Restart" instance=ExtResource( 5 )]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 4 )
+text = "Restart"
+
+[node name="Levels" type="NinePatchRect" parent="Border"]
+light_mask = 0
+margin_left = 12.0
+margin_top = 103.0
+margin_right = 116.0
+margin_bottom = 135.0
+focus_neighbour_bottom = NodePath("../Customize")
+mouse_filter = 1
+texture = ExtResource( 3 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Highlight" type="TextureRect" parent="Border/Levels"]
+modulate = Color( 1, 0, 0, 0.156863 )
+light_mask = 0
+material = SubResource( 1 )
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 190.0
+margin_bottom = 339.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.5, 0.06 )
+rect_clip_content = true
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 4
+
+[node name="Label" parent="Border/Levels" instance=ExtResource( 5 )]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 4 )
+text = "LEVELS"
+
+[node name="Main Menu" type="NinePatchRect" parent="Border"]
+light_mask = 0
+margin_left = 12.0
+margin_top = 136.0
+margin_right = 116.0
+margin_bottom = 168.0
+focus_neighbour_bottom = NodePath("../Customize")
+mouse_filter = 1
+texture = ExtResource( 3 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Highlight" type="TextureRect" parent="Border/Main Menu"]
+modulate = Color( 1, 0, 0, 0.156863 )
+light_mask = 0
+material = SubResource( 1 )
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 190.0
+margin_bottom = 339.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.5, 0.06 )
+rect_clip_content = true
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 4
+
+[node name="Label" parent="Border/Main Menu" instance=ExtResource( 5 )]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 4 )
+text = "MAIN MENU"
+
+[node name="ButtonRestart" type="TextureButton" parent="Border"]
+light_mask = 0
+margin_left = 14.0
+margin_top = 72.0
+margin_right = 114.0
+margin_bottom = 100.0
+mouse_filter = 1
+action_mode = 0
+
+[node name="ButtonSettings" type="TextureButton" parent="Border"]
+light_mask = 0
+margin_left = 14.0
+margin_top = 39.0
+margin_right = 114.0
+margin_bottom = 67.0
+mouse_filter = 1
+action_mode = 0
+
+[node name="ButtonLevelSelect" type="TextureButton" parent="Border"]
+light_mask = 0
+margin_left = 14.0
+margin_top = 105.0
+margin_right = 114.0
+margin_bottom = 133.0
+mouse_filter = 1
+action_mode = 0
+
+[node name="ButtonMainMenu" type="TextureButton" parent="Border"]
+light_mask = 0
+margin_left = 14.0
+margin_top = 138.0
+margin_right = 114.0
+margin_bottom = 166.0
+mouse_filter = 1
+action_mode = 0
+
+[node name="ui_hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "SFX2"
+
+[node name="ui_select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -0.904
+bus = "SFX2"
+
+[node name="BorderSettings" type="NinePatchRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -92.0
+margin_top = -95.0
+margin_right = 92.0
+margin_bottom = 105.0
+mouse_filter = 0
+texture = ExtResource( 9 )
+patch_margin_left = 15
+patch_margin_top = 12
+patch_margin_right = 21
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" parent="BorderSettings" instance=ExtResource( 10 )]
+
+[node name="MouseBlock" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -164.0
+margin_top = -65.0
+margin_right = 164.0
+margin_bottom = 23.0
+
+[connection signal="pressed" from="Border/ButtonRestart" to="." method="_on_ButtonRestart_pressed"]
+[connection signal="pressed" from="Border/ButtonSettings" to="." method="_on_ButtonSettings_pressed"]
+[connection signal="pressed" from="Border/ButtonLevelSelect" to="." method="_on_ButtonLevelSelect_pressed"]
+[connection signal="pressed" from="Border/ButtonMainMenu" to="." method="_on_ButtonMainMenu_pressed"]

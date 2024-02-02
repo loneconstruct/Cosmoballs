@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Balls/Bounce.wav" type="AudioStream" id=1]
+
+[node name="Bounce" type="AudioStreamPlayer2D"]
+stream = ExtResource( 1 )
+max_distance = 200.0
+bus = "SFX"
+area_mask = 0

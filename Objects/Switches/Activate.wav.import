@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Activate.wav-4f0a45d120bd029d6544885cc94d37f2.sample"
+
+[deps]
+
+source_file="res://Objects/Switches/Activate.wav"
+dest_files=[ "res://.import/Activate.wav-4f0a45d120bd029d6544885cc94d37f2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

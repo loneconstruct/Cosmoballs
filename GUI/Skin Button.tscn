@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://GUI/Skin Button.gd" type="Script" id=1]
+[ext_resource path="res://Player/Skins/Default.png" type="Texture" id=2]
+[ext_resource path="res://GUI/skinbutton1.png" type="Texture" id=4]
+[ext_resource path="res://GUI/skinbutton3.png" type="Texture" id=5]
+[ext_resource path="res://Player/Light.png" type="Texture" id=6]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[node name="Default" type="TextureButton" groups=["Skin Button"]]
+margin_right = 30.0
+margin_bottom = 30.0
+texture_normal = ExtResource( 4 )
+texture_disabled = ExtResource( 5 )
+stretch_mode = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Highlight" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 1, 0, 0, 0.156863 )
+material = SubResource( 1 )
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 48.0
+margin_bottom = 371.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.5, 0.06 )
+rect_clip_content = true
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 15, 15 )
+texture = ExtResource( 2 )

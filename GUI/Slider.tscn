@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://GUI/SliderHandle.png" type="Texture" id=1]
+[ext_resource path="res://GUI/Tick.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxFlat" id=25]
+content_margin_top = 6.0
+content_margin_bottom = 2.0
+bg_color = Color( 1, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.337255, 0, 0, 1 )
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[node name="Sound" type="HSlider"]
+margin_left = 48.0
+margin_right = 160.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+custom_icons/tick = ExtResource( 2 )
+custom_icons/grabber_highlight = ExtResource( 1 )
+custom_icons/grabber = ExtResource( 1 )
+custom_styles/slider = SubResource( 25 )
+custom_styles/grabber_area_highlight = SubResource( 26 )
+custom_styles/grabber_area = SubResource( 24 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+scrollable = false
+tick_count = 11
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

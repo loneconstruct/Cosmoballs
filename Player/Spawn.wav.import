@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Spawn.wav-dcf5b2d9d6a2d129f860921df9ca6899.sample"
+
+[deps]
+
+source_file="res://Player/Spawn.wav"
+dest_files=[ "res://.import/Spawn.wav-dcf5b2d9d6a2d129f860921df9ca6899.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

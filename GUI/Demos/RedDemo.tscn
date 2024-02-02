@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Tilesets/TilesetStation.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Balls/Ball Red.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI/Demos/Demo.gd" type="Script" id=3]
+
+[node name="RedDemo" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Tiles 32x32" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 0, 7, 0, 1, 10, 0, 2, 10, 0, 4, 10, 0, 5, 10, 0, 7, 10, 0, 8, 10, 0, 9, 7, 0, 65536, 10, 0, 65545, 10, 0, 196608, 14, 0, 196617, 14, 0, 327680, 10, 0, 327689, 10, 0, 393216, 7, 0, 393217, 10, 0, 393218, 10, 0, 393220, 10, 0, 393221, 10, 0, 393223, 10, 0, 393224, 10, 0, 393225, 7, 0 )
+
+[node name="Tiles 16x16" parent="." instance=ExtResource( 1 )]
+cell_size = Vector2( 16, 16 )
+tile_data = PoolIntArray( 6, 2, 0, 7, 2, 196608, 12, 2, 196608, 13, 2, 0, 65542, 2, 131072, 65543, 2, 196608, 65548, 2, 196608, 65549, 2, 131072, 262144, 2, 196609, 262145, 2, 196611, 262162, 2, 196609, 262163, 2, 196611, 327680, 2, 196608, 327681, 2, 196608, 327698, 2, 196608, 327699, 2, 196608, 524288, 2, 196608, 524289, 2, 196608, 524306, 2, 196608, 524307, 2, 196608, 589824, 2, 196609, 589825, 2, 196611, 589842, 2, 196609, 589843, 2, 196611, 786438, 2, 0, 786439, 2, 196608, 786444, 2, 196608, 786445, 2, 0, 851974, 2, 131072, 851975, 2, 196608, 851980, 2, 196608, 851981, 2, 131072 )
+
+[node name="Ball Red" parent="." instance=ExtResource( 2 )]
+position = Vector2( 80, 80 )
+DOWN = true
+
+[node name="Ball Red3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 240, 80 )
+DOWN = true
+
+[node name="Ball Red2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 160, 144 )
+UP = true
